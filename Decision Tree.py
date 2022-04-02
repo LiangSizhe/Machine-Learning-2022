@@ -107,7 +107,7 @@ def chooseBestFeature(D, A):
 
 
 def countMajority(D):  # mode()求出现次数最多的元素，iloc取得对应的类：好瓜或坏瓜（是或否）
-    print(D["好瓜"].mode())  
+    # print(D["好瓜"].mode())  
     return D["好瓜"].mode().iloc[0]
 # print(countMajority(df))
 
