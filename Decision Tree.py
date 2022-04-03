@@ -60,7 +60,7 @@ def split_continues(D, feature, splitValue):
     splitD = []
     # 以splitValue为划分点把D分成两部分
     # D[feature] <= splitValue的比较结果是多个True和False
-    # D[D[feature] <= splitValue]把feature属性熵小于等于splitValue的元素选出来
+    # D[D[feature] <= splitValue]把feature属性上小于等于splitValue的元素选出来
     splitD.append(D[D[feature] <= splitValue])
     splitD.append(D[D[feature] > splitValue])
     return splitD
@@ -81,7 +81,7 @@ def Gain_continues(D, feature):
     splitValue = 0
     # T[feature]的元素本质上是一个键值对 for t in T[feature]取到的是key而不是value
     # 加.values迭代器取的是对应元素，不加.values的话，取到的是索引值，也就是0123456
-    for t in T[feature].values:  # 尝试各个划分点，并取可以是增益最大的划分点
+    for t in T[feature].values:  # 尝试各个划分点，并取可以使增益最大的划分点
         temp = Ent(D) - sum(len(Dv)/len(D)*Ent(Dv) for Dv in split_continues(D, feature, t))
         if _max < temp:
             _max = temp
